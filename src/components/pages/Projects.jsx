@@ -3,23 +3,32 @@
 import { supabase } from "../../services/createCliente";
 import { useEffect, useState } from "react";
 import Cardproject from "../project/Cardproject";
-import { Flex, Wrap, WrapItem} from "@chakra-ui/react";
-import EditarProjeto from "../project/EditarProjeto";
+import { Flex, Wrap, WrapItem, FormControl, FormLabel, Input,FormHelperText} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 
 
 const Projects = () => {
 
-    const [projects, setProjects] = useState([{ id: 0, nome:"", orcamento:"", id_tipo:0}]);
+    const [projects, setProjects] = useState([{ id: 0, nome:"", orcamento:"",tipo_do_projeto:{descricao:""}, servicos:""}]);
 
    // Get all of projects.
   async function getProjects() {
-    const { data, error } = await supabase.from("projeto").select("*");
+    
+const { data, error } = await supabase
+.from('projeto')
+.select(`
+  id, 
+  nome, 
+  orcamento,
+  tipo_do_projeto (
+    descricao
+  ),servicos
+`)
     if(error){
       console.log(error.message)
     }
-    setProjects(data);
+    setProjects(data)
   }
   useEffect(() => {
     getProjects();
@@ -36,17 +45,14 @@ const Projects = () => {
     } 
     return;
     }
-    // Update by ID
-    async function updateById (id){
+     // Update by ID
+     async function updateById (id){
       const {data, error} = await supabase.from ("projeto").select("*").eq("id", id)
       if(error){
         console.log(error.message)
       }
        setProjects(data)
-       
-
     } 
-   
 
     
 
@@ -55,8 +61,8 @@ const Projects = () => {
 
         <Flex justifyContent="space-around" wrap="wrap" gap={3}> 
          {projects.map((project) =>(
-          <Cardproject key={project.id} id={project.id} nome={project.nome} orcamento={project.orcamento} categoria={project.id_tipo}
-           deleteById={deleteById} updateById={updateById} data={projects}/>
+          <Cardproject key={project.id} idProjeto={project.id} nomeProjeto={project.nome} orcamentoProjeto={project.orcamento} servicosProjeto={project.servicos} categoriaProjeto={project.tipo_do_projeto.descricao}
+           deleteById={deleteById} updateById/>
          ))}
        </Flex> 
         </div>

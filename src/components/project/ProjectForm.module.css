@@ -17,6 +17,9 @@
     border-radius: 0;
     border: none;
 } 
+.form_control textarea {
+    padding: 10px;
+}
 
 .form_control input::placeholder {
 color: #7b7b7b;

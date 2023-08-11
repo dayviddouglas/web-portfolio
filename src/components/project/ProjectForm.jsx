@@ -12,6 +12,7 @@ const ProjectForm = () => {
     nome: "",
     orcamento: "",
     id_tipo: 0,
+    servicos: "",
   }]);
 
   // Make a post for create a new project.
@@ -22,7 +23,7 @@ const ProjectForm = () => {
         nome:project.nome,
         orcamento:project.orcamento,
         id_tipo:project.id_tipo,
-        
+        servicos:project.servicos, 
       }])
     if (error) {
       console.log(error);
@@ -66,6 +67,8 @@ const ProjectForm = () => {
         />
       </div>
 
+      
+
       <div className={styles.form_control}>
         <label htmlFor="input_orcamento">Orçamento do Projeto:</label>
         <input
@@ -78,6 +81,20 @@ const ProjectForm = () => {
             setProject({ ...project, orcamento: e.target.value });
           }}
         />
+      </div>
+
+      <div className={styles.form_control}>
+        <label htmlFor="input_servicos">Serviços:</label>
+        <textarea name="input_servicos"
+          id="input_servicos"
+          placeholder="Insira os serviços que irão ser realizados..."
+          cols={20}
+          rows={7}
+          onChange={(e) => {
+            setProject({ ...project, servicos: e.target.value });
+          }}>
+          
+       </textarea>
       </div>
 
       <div className={styles.select_control}>

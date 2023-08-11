@@ -1,47 +1,54 @@
 /* eslint-disable react/prop-types */
  
- import {Card, CardBody, Stack, Heading, Text,CardFooter, Button} from '@chakra-ui/react';
+ import {Card, CardBody, Stack, Heading, Text,CardFooter, Button,} from '@chakra-ui/react';
+import EditarProjeto from './EditarProjeto';
 
 
 
  
- const Cardproject = ({ id, nome, orcamento, categoria,deleteById, updateById}) => {
+ const Cardproject = ({ idProjeto, nomeProjeto, orcamentoProjeto, servicosProjeto, categoriaProjeto,deleteById, uploadById}) => {
    return(
     <div>
             
-             <Card maxW={300} maxH={300} border="2px solid black" py={20} px={15} mt={20} mx={20}
+             <Card minW={200} minH={200} maxW={400} maxH={400} border="2px solid black" py={20} px={15} mt={20} mx={20}
             
             >
 
             <Stack> 
                 <CardBody >
-                <Heading as="h4"> Nome: {nome}</Heading>
+                <Heading as="h4"> Nome: {nomeProjeto}</Heading>
 
-                <Text py='2'>
-                    Orçamento: R$ {orcamento} 
+                <Text py='2' my={5} fontWeight="bold">
+                    Orçamento: R$ {orcamentoProjeto}.
                 </Text>
-                <Text py='2'>
-                Categoria: {categoria}
+
+                <Text p={10} border="1px solid #778899" textAlign="left"  borderRadius={5} my={5}>
+                    Serviços: {servicosProjeto} 
+                </Text>
+                <Text py='2' fontWeight="bold">
+                Categoria: {categoriaProjeto}.
                 </Text>
 
                 </CardBody>
 
                 <CardFooter>
 
-                <Button variant='solid' bg="#00BFFF" p={10} mr={5} cursor="pointer" 
-                _hover={{ transition: 'transform 0.5s', color: 'white' }} onClick={()=> updateById(id)}>
+                <Button variant='solid' bg="#00BFFF" p={10} mr={5} cursor="pointer" borderRadius={5}
+                _hover={{ transition: 'transform 0.5s', color: 'white' }} onClick={()=> uploadById(idProjeto)}>
                     Editar
                 </Button>
                 
-                <Button variant='solid' bg="#B22222" p={10}  cursor="pointer" 
-                _hover={{ transition: 'transform 0.5s', color: 'white' }} onClick={()=> deleteById(id)}>
+                <Button variant='solid' bg="#B22222" p={10}  cursor="pointer" borderRadius={5} 
+                _hover={{ transition: 'transform 0.5s', color: 'white' }} onClick={()=> deleteById(idProjeto)}>
                     Apagar
                 </Button>
                 </CardFooter>
-            </Stack>
-            </Card>
-            
+            </Stack>  
+            </Card>  
+            <EditarProjeto/>
+                               
 </div>  
+  
 );
  }
 
