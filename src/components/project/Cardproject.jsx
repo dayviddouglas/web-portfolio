@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
  
  import {Card, CardBody, Stack, Heading, Text,CardFooter, Button,} from '@chakra-ui/react';
-import EditarProjeto from './EditarProjeto';
+
 
 
 
@@ -45,7 +45,6 @@ import EditarProjeto from './EditarProjeto';
                 </CardFooter>
             </Stack>  
             </Card>  
-            <EditarProjeto/>
                                
 </div>  
   

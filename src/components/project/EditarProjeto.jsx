@@ -1,17 +1,12 @@
 /* eslint-disable react/prop-types */
  import { FormControl,FormLabel, Input, FormHelperText} from "@chakra-ui/react";
 import { useState } from "react";
-import { supabase } from "../../services/createCliente";
+
 
 
 const EditarProjeto = ({ idProject, nomeProject, orcamentoProject, servicosProject, categoriaProject}) =>{
 
     const{project, setProject} = useState({id:idProject, nome:nomeProject , orcamento:orcamentoProject, servicos:servicosProject, id_tipo:categoriaProject })
-
-    
-
-
-
    
 
     return (

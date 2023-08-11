@@ -52,6 +52,7 @@ const { data, error } = await supabase
         console.log(error.message)
       }
        setProjects(data)
+       console.log(projects)
     } 
 
     
