@@ -11,6 +11,7 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Login from './components/login/Login';
 import CadastrarUsuario from "./components/login/CadastrarUsuario";
+import EditarProjeto from "./components/project/EditarProjeto";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
                     <Route exact path='/company' element={<Company/>}/>
                     <Route exact path='/login' element={<Login/>}> </Route>
                     <Route exact path='/cadastrarUsuario' element={<CadastrarUsuario/>}/>
+                    <Route exact path='/editarprojeto' element={<EditarProjeto/>}/>
                     
           </Routes>
           </Container>

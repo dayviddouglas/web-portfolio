@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import ProjectForm from "../project/ProjectForm";
 import styles from "./Newproject.module.css";
 import { useState } from "react";
-import { supabase } from "../../createCliente";
+
+
 
 const Newproject = () =>{
   

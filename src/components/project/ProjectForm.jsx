@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import styles from "./ProjectForm.module.css";
-import { supabase } from "../../createCliente";
+import { supabase } from "../../services/createCliente";
 
 
 const ProjectForm = () => {
