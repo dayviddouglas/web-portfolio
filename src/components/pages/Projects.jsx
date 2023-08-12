@@ -54,7 +54,7 @@ const { data, error } = await supabase
 
         <Flex justifyContent="space-around" wrap="wrap" gap={3}> 
          {projects.map((project) =>(
-          <Cardproject key={project.id} idProjeto={project.id} nomeProjeto={project.nome} orcamentoProjeto={project.orcamento} servicosProjeto={project.servicos} categoriaProjeto={project.tipo_do_projeto.descricao}
+          <Cardproject key={project.id} project={projects} idProjeto={project.id} nomeProjeto={project.nome} orcamentoProjeto={project.orcamento} servicosProjeto={project.servicos} categoriaProjeto={project.tipo_do_projeto.descricao}
            deleteById={deleteById}/>
          ))}
        </Flex> 
