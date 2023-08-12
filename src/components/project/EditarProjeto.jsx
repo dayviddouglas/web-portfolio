@@ -54,7 +54,9 @@ function EditarProjeto({
       .eq("id", id);
     if (error) {
       console.log(error.message);
-       }
+       } else {
+        console.log("Atualização realizada com sucesso!");
+      }
     }catch (error){
      console.log(error)
     }
