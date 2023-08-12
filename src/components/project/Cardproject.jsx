@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
  
  import {Card, CardBody, Stack, Heading, Text,CardFooter, Button,} from '@chakra-ui/react';
+import EditarProjeto from './EditarProjeto';
 
 
 
 
  
- const Cardproject = ({ idProjeto, nomeProjeto, orcamentoProjeto, servicosProjeto, categoriaProjeto,deleteById, uploadById}) => {
+ const Cardproject = ({ idProjeto, nomeProjeto, orcamentoProjeto, servicosProjeto, categoriaProjeto,deleteById}) => {
    return(
     <div>
             
@@ -33,10 +34,7 @@
 
                 <CardFooter>
 
-                <Button variant='solid' bg="#00BFFF" p={10} mr={5} cursor="pointer" borderRadius={5}
-                _hover={{ transition: 'transform 0.5s', color: 'white' }} onClick={()=> uploadById(idProjeto)}>
-                    Editar
-                </Button>
+                <EditarProjeto idProjeto={idProjeto}/>
                 
                 <Button variant='solid' bg="#B22222" p={10}  cursor="pointer" borderRadius={5} 
                 _hover={{ transition: 'transform 0.5s', color: 'white' }} onClick={()=> deleteById(idProjeto)}>
