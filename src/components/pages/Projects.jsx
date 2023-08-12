@@ -45,15 +45,7 @@ const { data, error } = await supabase
     } 
     return;
     }
-     // Update by ID
-     async function updateById (id){
-      const {data, error} = await supabase.from ("projeto").select("*").eq("id", id)
-      if(error){
-        console.log(error.message)
-      }
-       setProjects(data)
-       console.log(projects)
-    } 
+     
 
     
 
@@ -63,7 +55,7 @@ const { data, error } = await supabase
         <Flex justifyContent="space-around" wrap="wrap" gap={3}> 
          {projects.map((project) =>(
           <Cardproject key={project.id} idProjeto={project.id} nomeProjeto={project.nome} orcamentoProjeto={project.orcamento} servicosProjeto={project.servicos} categoriaProjeto={project.tipo_do_projeto.descricao}
-           deleteById={deleteById} updateById/>
+           deleteById={deleteById}/>
          ))}
        </Flex> 
         </div>
