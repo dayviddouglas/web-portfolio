@@ -12,7 +12,8 @@ import EditarProjeto from './EditarProjeto';
     return(
     <div>
             
-             <Card minW={200} minH={200} maxW={400} maxH={400} border="2px solid black" py={20} px={15} mt={20} mx={20}
+             <Card  minW={200} minH={200} maxW={400} maxH={500}  border="2px solid black" py={20} px={15} mt={20} mx={20} 
+             borderRadius={30}
             
             >
 
@@ -42,8 +43,9 @@ import EditarProjeto from './EditarProjeto';
                 categoriaProjeto={categoriaProjeto}
                 />
                 
-                <Button variant='solid' bg="#B22222" p={10}  cursor="pointer" borderRadius={5} 
-                _hover={{ transition: 'transform 0.5s', color: 'white' }} onClick={()=> deleteById(idProjeto)}>
+                <Button variant='solid' bg="#B22222" p={10} cursor="pointer" borderRadius={5} ml={10} 
+                _hover={{ transition: 'transform 0.5s', color: 'white' }} 
+                 onClick={()=> deleteById(idProjeto)}>
                     Apagar
                 </Button>
                 </CardFooter>

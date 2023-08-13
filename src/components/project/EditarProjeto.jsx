@@ -15,6 +15,7 @@ import {
   Box,
   Text,
   Textarea,
+  Flex,
 } from "@chakra-ui/react";
 import React from "react";
 import { supabase } from "../../services/createCliente";
@@ -74,7 +75,8 @@ function EditarProjeto({
 
   return (
     <Box>
-      <Button onClick={onOpen}>Open Modal</Button>
+      <Button onClick={onOpen}ariant='solid' bg="#87CEEB" p={10}  cursor="pointer" borderRadius={5} 
+                _hover={{ transition: 'transform 0.5s', color: 'white' }}>Editar</Button>
       <Modal
         initialFocusRef={initialRef}
         finalFocusRef={finalRef}
@@ -82,13 +84,17 @@ function EditarProjeto({
         onClose={onClose}
       >
         <ModalOverlay />
-        <ModalContent bg="#4F4F4F" w="30%" mt={190} ml={500} h={300}>
-          <ModalHeader>Edite seu Projeto.</ModalHeader>
-          <ModalCloseButton />
+        
+        <ModalContent bg="#FFF0F5" w="30%"  mt={190} ml={500} h="30%">
+          <Flex>
+          <ModalHeader mt={10} ml={10} mb={10} mr={290}>Edite seu Projeto.</ModalHeader>
+          <ModalCloseButton w={15} h={15} p={10} m={5} cursor="pointer"/>
+          </Flex>
+          
           <ModalBody pb={6}>
             <FormControl>
-              <FormLabel>Nome do Projeto</FormLabel>
-              <Input
+              <FormLabel my={10} fontWeight="bold" as="h4">Nome do Projeto</FormLabel>
+              <Input w={250} px={5} py={8}
                 ref={initialRef}
                 type="text"
                 defaultValue={nomeProjeto}
@@ -98,8 +104,8 @@ function EditarProjeto({
 
 
             <FormControl mt={4}>
-              <FormLabel>Orçamento</FormLabel>
-              <Input
+              <FormLabel my={10} fontWeight="bold" as="h4">Orçamento</FormLabel>
+              <Input w={250} px={5} py={8}
                 type="number"
                 defaultValue={orcamentoProjeto}
                 onChange={(e) => setProjects({ orcamento: e.target.value })}
@@ -107,16 +113,18 @@ function EditarProjeto({
             </FormControl>
 
             <FormControl mt={4}>
-              <Text mb="8px"> Serviços</Text>
+              <Text my={10} fontWeight="bold" as="h4"> Serviços</Text>
               <Textarea
                 defaultValue={servicosProjeto}
                 onChange={(e) => setProjects({ servicos: e.target.value })}
                 size="sm"
+                cols={34}
+                rows={7}
               />
             </FormControl>
 
             <FormControl mt={4}>
-              <FormLabel>Tipo do projeto</FormLabel>
+              <FormLabel my={10} fontWeight="bold" as="h4">Tipo do projeto</FormLabel>
               <Input
                 type="text"
                 defaultValue={categoriaProjeto}
@@ -132,6 +140,7 @@ function EditarProjeto({
             <Button onClick={onClose}>Cancel</Button>
           </ModalFooter>
         </ModalContent>
+        
       </Modal>
     </Box>
   );
