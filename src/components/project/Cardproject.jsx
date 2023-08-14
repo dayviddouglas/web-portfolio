@@ -19,10 +19,10 @@ import EditarProjeto from './EditarProjeto';
 
             <Stack> 
                 <CardBody >
-                <Heading as="h4"> Nome: {nomeProjeto}</Heading>
+                <Heading as="h4"> Nome: {nomeProjeto.toString()}</Heading>
 
                 <Text py='2' my={5} fontWeight="bold">
-                    Orçamento: R$ {orcamentoProjeto}.
+                    Orçamento: R$ { Number(orcamentoProjeto).toFixed(2).replace(".", ",")}
                 </Text>
 
                 <Text p={10} border="1px solid #778899" textAlign="left"  borderRadius={5} my={5}>

@@ -32,7 +32,8 @@ const ProjectForm = () => {
   };
 
   const handleSubmit = () => {
-    createProject(project).then((data)=>console.log(data)).catch((err)=>console.log(err.message))
+     createProject(project).then((data)=>console.log(data)).catch((err)=>console.log(err.message)) 
+    
   };
 
   // Get all of the types of projects.
@@ -72,13 +73,16 @@ const ProjectForm = () => {
       <div className={styles.form_control}>
         <label htmlFor="input_orcamento">Orçamento do Projeto:</label>
         <input
-          type="number"
-          step="0.001"
+          type="text"
           name="input_orcamento_projeto"
           id="input_orcamento_projeto"
           placeholder="Insira o orçamento total."
           onChange={(e) => {
-            setProject({ ...project, orcamento: e.target.value });
+            let value = e.target.value;
+                    value = value.replace(/\D/g, "");
+                    value = value.replace(/(\d+)(\d{2})$/, "$1,$2");
+                    e.target.value = value
+            setProject({ ...project, orcamento: Number(e.target.value.replace(",", "."))});
           }}
         />
       </div>

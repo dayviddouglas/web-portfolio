@@ -15,7 +15,6 @@ import {
   Box,
   Text,
   Textarea,
-  Flex,
 } from "@chakra-ui/react";
 import React from "react";
 import { supabase } from "../../services/createCliente";
@@ -39,7 +38,6 @@ function EditarProjeto({
     nome: "",
     orcamento: "",
     servicos: "",
-    categoria: "",
   });
 
   async function updateById(id) {
@@ -62,15 +60,20 @@ function EditarProjeto({
     }
   }
 
-  const reloadPage = ()=> {
-    window.location.reload();
-  }
+  const reloadPage = () => {
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  };
 
   const handleSubmit = (e) => {
-      e.preventDefault();
-      updateById(idProjeto);
-      onClose();
-      reloadPage();   
+    e.preventDefault();
+    updateById(idProjeto)
+      .then(() => {
+        onClose();
+        reloadPage();
+      })
+      .catch((error) => console.log(error.message));
   };
 
   return (
@@ -95,12 +98,15 @@ function EditarProjeto({
       >
         <ModalOverlay />
         <ModalContent bg="#FFF0F5" w="30%" mt={100} ml={500} h="30%">
-          <Flex>
-            <ModalHeader mt={10} ml={10} mb={10} mr={290}>
-              Edite seu Projeto.
-            </ModalHeader>
-            <ModalCloseButton w={15} h={15} p={10} m={5} cursor="pointer" />
-          </Flex>
+         
+            <Box float="right">
+            <ModalCloseButton w={15} h={15} p={10} ml={360} cursor="pointer" border="1px solid white " />
+              <ModalHeader as="h4" textAlign="center" bg="#C0C0C0" py={10}>
+                Edite seu Projeto:
+              </ModalHeader>
+              
+            </Box>
+          
 
           <ModalBody pb={6}>
             <FormControl>
@@ -126,15 +132,20 @@ function EditarProjeto({
                 w={250}
                 px={5}
                 py={8}
-                type="number"
+                type="text"
                 defaultValue={orcamentoProjeto}
-                onChange={(e) => setProjects({ orcamento: e.target.value })}
+                onChange={(e) => {
+                  let value = e.target.value;
+                  value = value.replace(/\D/g, "");
+                  value = value.replace(/(\d+)(\d{2})$/, "$1,$2");
+                  e.target.value = value
+                  setProjects({ ...projects, orcamento: Number(e.target.value.replace(",", "."))});
+                }}
               />
             </FormControl>
 
             <FormControl mt={4}>
               <Text my={10} fontWeight="bold" as="h4">
-                {" "}
                 Serviços
               </Text>
               <Textarea
@@ -167,13 +178,17 @@ function EditarProjeto({
             >
               Salvar
             </Button>
-            <Button onClick={onClose} ariant="solid"
+            <Button
+              onClick={onClose}
+              ariant="solid"
               bg="#B22222"
               p={4}
               cursor="pointer"
               borderRadius={5}
               _hover={{ transition: "transform 0.5s", color: "white" }}
-              >Cancelar</Button>
+            >
+              Cancelar
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
