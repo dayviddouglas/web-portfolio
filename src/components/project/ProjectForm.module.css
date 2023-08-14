@@ -36,6 +36,11 @@ color: #7b7b7b;
     margin-bottom: 0.6em;
     font-weight: bold;
 }
+
+.select_control span{
+    font-size: 12px;
+    
+}
 .select_control select {
     padding: 0.7em;
     border-radius: 0;

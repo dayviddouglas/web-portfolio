@@ -98,7 +98,7 @@ const ProjectForm = () => {
       </div>
 
       <div className={styles.select_control}>
-            <label htmlFor= "input_select"> Tipo do Projeto: </label>
+            <label htmlFor= "input_select"> Tipo do Projeto: <br/> <span> Observação: O tipo não poderá ser modificado posteriormente. </span></label>
             <select name="input_select" id="input_select" onChange= {(e)=>{
                setProject({...project, id_tipo: e.target.value})}}> 
             <option selected>Selecione uma opção</option>
