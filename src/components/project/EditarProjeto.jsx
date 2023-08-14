@@ -62,10 +62,15 @@ function EditarProjeto({
     }
   }
 
+  const reloadPage = ()=> {
+    window.location.reload();
+  }
+
   const handleSubmit = (e) => {
-    e.preventDefault();
-    updateById(idProjeto);
-    onClose();
+      e.preventDefault();
+      updateById(idProjeto);
+      onClose();
+      reloadPage();   
   };
 
   return (
@@ -82,89 +87,96 @@ function EditarProjeto({
         Editar
       </Button>
 
-      
-        <Modal
-          initialFocusRef={initialRef}
-          finalFocusRef={finalRef}
-          isOpen={isOpen}
-          onClose={onClose}
-        >
-          <ModalOverlay />
-          <ModalContent bg="#FFF0F5" w="30%" mt={100} ml={500} h="30%">
-            <Flex>
-              <ModalHeader mt={10} ml={10} mb={10} mr={290}>
-                Edite seu Projeto.
-              </ModalHeader>
-              <ModalCloseButton w={15} h={15} p={10} m={5} cursor="pointer" />
-            </Flex>
+      <Modal
+        initialFocusRef={initialRef}
+        finalFocusRef={finalRef}
+        isOpen={isOpen}
+        onClose={onClose}
+      >
+        <ModalOverlay />
+        <ModalContent bg="#FFF0F5" w="30%" mt={100} ml={500} h="30%">
+          <Flex>
+            <ModalHeader mt={10} ml={10} mb={10} mr={290}>
+              Edite seu Projeto.
+            </ModalHeader>
+            <ModalCloseButton w={15} h={15} p={10} m={5} cursor="pointer" />
+          </Flex>
 
-            <ModalBody pb={6}>
-              <FormControl>
-                <FormLabel my={10} fontWeight="bold" as="h4">
-                  Nome do Projeto
-                </FormLabel>
-                <Input
-                  w={250}
-                  px={5}
-                  py={8}
-                  ref={initialRef}
-                  type="text"
-                  defaultValue={nomeProjeto}
-                  onChange={(e) => setProjects({ nome: e.target.value })}
-                />
-              </FormControl>
-
-              <FormControl mt={4}>
-                <FormLabel my={10} fontWeight="bold" as="h4">
-                  Orçamento
-                </FormLabel>
-                <Input
-                  w={250}
-                  px={5}
-                  py={8}
-                  type="number"
-                  defaultValue={orcamentoProjeto}
-                  onChange={(e) => setProjects({ orcamento: e.target.value })}
-                />
-              </FormControl>
-
-              <FormControl mt={4}>
-                <Text my={10} fontWeight="bold" as="h4">
-                  {" "}
-                  Serviços
-                </Text>
-                <Textarea
-                  defaultValue={servicosProjeto}
-                  onChange={(e) => setProjects({ servicos: e.target.value })}
-                  size="sm"
-                  cols={34}
-                  rows={7}
-                />
-              </FormControl>
-
-              <FormControl mt={4}>
-                <FormLabel my={10} fontWeight="bold" as="h4">
-                  Tipo do projeto
-                </FormLabel>
-                <Text>{categoriaProjeto}</Text>
-                {/* <Input
+          <ModalBody pb={6}>
+            <FormControl>
+              <FormLabel my={10} fontWeight="bold" as="h4">
+                Nome do Projeto
+              </FormLabel>
+              <Input
+                w={250}
+                px={5}
+                py={8}
+                ref={initialRef}
                 type="text"
-                defaultValue={categoriaProjeto}
-                onChange={(e) => setProjects({ categoria: e.target.value })}
-              /> */}
-              </FormControl>
-            </ModalBody>
+                defaultValue={nomeProjeto}
+                onChange={(e) => setProjects({ nome: e.target.value })}
+              />
+            </FormControl>
 
-            <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={handleSubmit}>
-                Save
-              </Button>
-              <Button onClick={onClose}>Cancel</Button>
-            </ModalFooter>
-          </ModalContent>
-      
-        </Modal>
-      
+            <FormControl mt={4}>
+              <FormLabel my={10} fontWeight="bold" as="h4">
+                Orçamento
+              </FormLabel>
+              <Input
+                w={250}
+                px={5}
+                py={8}
+                type="number"
+                defaultValue={orcamentoProjeto}
+                onChange={(e) => setProjects({ orcamento: e.target.value })}
+              />
+            </FormControl>
+
+            <FormControl mt={4}>
+              <Text my={10} fontWeight="bold" as="h4">
+                {" "}
+                Serviços
+              </Text>
+              <Textarea
+                defaultValue={servicosProjeto}
+                onChange={(e) => setProjects({ servicos: e.target.value })}
+                size="sm"
+                cols={34}
+                rows={7}
+              />
+            </FormControl>
+
+            <FormControl mt={4}>
+              <FormLabel my={10} fontWeight="bold" as="h4">
+                Tipo do projeto
+              </FormLabel>
+              <Text>{categoriaProjeto}</Text>
+            </FormControl>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button
+              ariant="solid"
+              bg="#87CEEB"
+              p={4}
+              cursor="pointer"
+              borderRadius={5}
+              _hover={{ transition: "transform 0.5s", color: "white" }}
+              mr={8}
+              onClick={handleSubmit}
+            >
+              Salvar
+            </Button>
+            <Button onClick={onClose} ariant="solid"
+              bg="#B22222"
+              p={4}
+              cursor="pointer"
+              borderRadius={5}
+              _hover={{ transition: "transform 0.5s", color: "white" }}
+              >Cancelar</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Box>
   );
 }
